@@ -1,0 +1,20 @@
+{
+  "name": "js-date-article-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/danielmascena/js-date-article-example.git",
+  "author": "Daniel Mascena <daniel.mascena@mindera.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@vue/web-component-wrapper": "^1.3.0",
+    "vue": "^2.6.12",
+    "vue-hot-reload-api": "^2.3.4"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.2.0",
+    "pug": "^3.0.0",
+    "sass": "^1.32.7",
+    "typescript": "^4.1.5",
+    "vue-template-compiler": "^2.6.12"
+  }
+}
