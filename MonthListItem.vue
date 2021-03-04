@@ -1,11 +1,11 @@
 <template>
-  <article>
-    <h2>{{dateMonth.toString().slice(3,7)}}</h2>
-    <ul class="month">
-      <li v-for="(day, index) in getDays" :key="index" class="days">
+  <article class="month-container" role="table">
+    <h2>{{dateToPresent.toString().slice(3,7)}}</h2>
+    <div class="month" role="rowgroup">
+      <span v-for="(day, index) in getDays" :key="index" class="day" role="cell">
         {{day}}
-      </li>
-    </ul>
+      </span>
+    </div>
   </article>
 </template>
 
@@ -17,11 +17,10 @@ export default {
     dateToPresent: {
       type: Date,
       required: true
-    }
-  },
-  data() {
-    return {
-      dateMonth: this.dateToPresent
+    },
+    selectedDay: {
+      type: Number,
+      default: 0
     }
   },
   computed: {
@@ -30,9 +29,9 @@ export default {
         {length:(
           (new Date(
             this.dateToPresent.getFullYear(),
-            this.dateToPresent.getDate()+1,
+            this.dateToPresent.getMonth()+1,
             0)
-          ).getDate()-1)},
+          ).getDate())},
         (_, i) => i + 1
       );
     }
@@ -42,15 +41,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .month {
-    display: flex;
-    flex-wrap: wrap;
+  .month-container {
     width: 50%;
-    margin: 0;
-    justify-content: space-between;
   }
-  .days {
-    flex-basis: 30px;
+
+  .month {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+  }
+
+  .day {
+    text-align: right;
+  }
+
+  .selected-day {
+    background-color: dodgerblue;
+    color: whitesmoke;
   }
 
 </style>
